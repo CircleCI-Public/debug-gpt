@@ -1,0 +1,10 @@
+#error-list {
+  padding: 10px;
+}
+
+.error {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+}
