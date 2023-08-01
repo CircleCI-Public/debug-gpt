@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Error Extension",
-  "description": "Demonstrates the API by attaching a debugger to a webpage and capturing network data.",
+  "name": "AI DevTools",
+  "description": "Explain browser errors using LLMs.",
   "version": "1.0",
   "permissions": ["debugger", "tabs"],
-  "host_permissions": ["https://www.google.com/*"],
   "background": {
     "service_worker": "service-worker.js"
   },
+  "devtools_page": "devtools.html",
   "action": {}
 }

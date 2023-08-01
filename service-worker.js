@@ -24,6 +24,6 @@ chrome.debugger.onEvent.addListener(function (source, method, params) {
     console.log('Response received:', params.response);
     // Perform your desired action with the response data
   } else {
-    console.log('Got some other event');
+    console.log('Got some other event', params);
   }
 });
