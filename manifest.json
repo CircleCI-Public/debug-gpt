@@ -1,30 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Error Capture",
+  "name": "AI DevTools",
+  "description": "Explain browser errors using LLMs.",
   "version": "1.0",
+  "permissions": ["debugger", "tabs"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "service-worker.js"
   },
-  "permissions": [
-    "activeTab"
-  ],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-  },
-  {
-    "matches": ["<all_urls>"],
-    "js": ["document_start.js"],
-    "run_at": "document_start"
-}],
   "devtools_page": "devtools.html",
-  "web_accessible_resources": [
-    {
-      "resources": ["inject.js"],
-      "matches": [
-        "<all_urls>"
-    ]
-    }
-  ]
+  "action": {}
 }

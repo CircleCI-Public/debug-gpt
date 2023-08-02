@@ -1,1 +1,0 @@
-console.log("Atleast reached background.js")
