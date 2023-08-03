@@ -3,9 +3,14 @@
   "name": "AI DevTools",
   "description": "Explain browser errors using LLMs.",
   "version": "1.0",
-  "permissions": ["debugger", "tabs"],
+  "permissions": [
+    "debugger",
+    "tabs",
+    "storage"
+  ],
   "background": {
-    "service_worker": "service-worker.js"
+    "service_worker": "service-worker.js",
+    "type": "module"
   },
   "devtools_page": "devtools.html",
   "action": {}
