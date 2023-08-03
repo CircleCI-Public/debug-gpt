@@ -8,7 +8,7 @@ const callAI = msg => {
   console.log('calling AI with msg', msg)
 }
 
-const onData = msg => {
+window.onData = msg => {
   document.getElementById(
     'container'
   ).innerHTML += `<div class='item'><div class='data'><p>${errorSvg} ${
