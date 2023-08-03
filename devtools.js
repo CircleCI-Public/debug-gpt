@@ -2,12 +2,12 @@ chrome.devtools.panels.create(
   'AI Errors',
   '',
   '/panel.html',
-  function (extensionPanel) {
-    var _window // Going to hold the reference to panel.html's `window`
+  extensionPanel => {
+    let _window // Going to hold the reference to panel.html's `window`
 
-    var data = []
-    var port = chrome.runtime.connect({ name: 'devtools' })
-    port.onMessage.addListener(function (msg) {
+    let data = []
+    const port = chrome.runtime.connect({ name: 'devtools' })
+    port.onMessage.addListener(msg => {
       // Write information to the panel, if exists.
       // If we don't have a panel reference (yet), queue the data.
       if (_window) {
@@ -22,11 +22,11 @@ chrome.devtools.panels.create(
       _window = panelWindow
 
       // Release queued data
-      var msg
+      let msg
       while ((msg = data.shift())) _window.onData(msg)
 
       // setup two way communication with the Service Worker
-      _window.notifySW = function (msg) {
+      _window.notifySW = msg => {
         port.postMessage(msg)
       }
     })
