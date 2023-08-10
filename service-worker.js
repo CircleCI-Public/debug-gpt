@@ -39,6 +39,7 @@ const notifyPanel = msg => {
 
 chrome.debugger.onEvent.addListener((source, method, params) => {
   notifyPanel({
+    uuid: crypto.randomUUID(),
     time: new Date(),
     data: {
       source,

@@ -39,6 +39,14 @@
       display: flex;
     }
 
+    .item:has(.data-ai) {
+      background-color: rgb(60, 138, 254);
+    }
+
+    .data-ai {
+      color: white;
+    }
+
     .item .data {
       width: 100%;
     }
@@ -78,7 +86,7 @@
 </head>
 
 <body>
-  <script src="panel.js"></script>
+  <script src="panel.js" type="module"></script>
   <div id="container"></div>
 </body>
 
