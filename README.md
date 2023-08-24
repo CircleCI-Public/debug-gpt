@@ -16,7 +16,7 @@ Then, in Chrome...
 - Go to `chrome://extensions`
 - Make sure you have `Developmer Mode` enabled
 - Click `Load Unpacked` and select the `extension` directory of this repository.
-- When you change the code, go back to `chrome://extensions` and click the update arrow to reload the extension.
+- When you change the code, run `yarn build` then go back to `chrome://extensions` and click the update arrow to reload the extension.
 
 ## Usage
 
