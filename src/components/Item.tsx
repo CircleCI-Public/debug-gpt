@@ -5,7 +5,8 @@ import { Configuration, ChatGPTClient } from '../utils/chatgpt-api-client.js'
 import ErrorSVG from '../../assets/error.svg';
 import AiSVG from '../../assets/ai.svg';
 
-const apiKey = 'YOUR_KEY_HERE' //chrome.storage.local.get("apiKey").catch(console.error);
+// this should be somewhere else
+const apiKey = 'YOUR_API_KEY_HERE' //chrome.storage.local.get("apiKey").catch(console.error);
 const client = new ChatGPTClient(new Configuration({ apiKey }))
 
 interface Props {
