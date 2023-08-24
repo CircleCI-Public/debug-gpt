@@ -41,7 +41,6 @@ class ChatGPTClient {
     })
 
     const contents = await response.json()
-    console.log(contents)
     return contents.choices[0].message.content
   }
 }
