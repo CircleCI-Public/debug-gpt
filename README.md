@@ -1,10 +1,10 @@
 # Debug-GPT
 
-A chrome extension to use LLMs to debug the web.
+A Chrome extension to use LLMs to debug the web.
 
 ## Installation
 
-The best way to get started is to build the extension locally and then loading it as an unpacked extension.
+The best way to get started is to build the extension locally and then load it as an unpacked extension.
 
 Locally...
 
@@ -14,13 +14,13 @@ Locally...
 Then, in Chrome...
 
 - Go to `chrome://extensions`
-- Make sure you have `Developmer Mode` enabled
+- Make sure you have `Developer Mode` enabled
 - Click `Load Unpacked` and select the `extension` directory of this repository.
-- When you change the code, go back to `chrome://extensions` and click the update arrow to reload the extension.
+- When you change the code, run `yarn build` then go back to `chrome://extensions` and click the update arrow to reload the extension.
 
 ## Usage
 
-- In chrome open devtools
+- In Chrome open DevTools
 - Pin the `Debug GPT` extension in the taskbar
 - Click the action button for the extension
   - You should get confirmation that an extension is debugging the browser
