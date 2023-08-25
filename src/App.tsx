@@ -1,5 +1,10 @@
-import { useReducer } from "react";
+import { useContext, useReducer } from "react";
+
 import {Item} from "./components/Item";
+import { AskForKey } from "./components/AskForKey";
+import { AskForPasscode } from "./components/AskForPasscode";
+
+import { AppContext } from "./contexts/AppContext";
 
 interface Message {
   uuid: string;
@@ -24,22 +29,28 @@ const reducer = (state:{messages: Message[]}, action:{type: string, msg: Message
   throw Error('Unknown action.');
 }
 
-function App() {
+const App = () => {
 
   const [state, dispatch] = useReducer(reducer, { messages: [] });
+  const {encryptedGPTKey, passcode, setEncryptedKey} = useContext(AppContext);
 
   window.onData = (msg:Message) => {
     dispatch({ type: 'add_message', msg })
   }
 
-  if (!state.messages) {
-    return <p>No events yet. Configure your key?</p>
+  if (!encryptedGPTKey) {
+    return <AskForKey />
+  }
+
+  if (!passcode) {
+    return <AskForPasscode />
   }
 
   return <>
-    {state.messages.map((m) =>
+    <button onClick={() => setEncryptedKey('')}>Change Key</button>
+    {(state.messages.length ? state.messages.map((m) =>
       <Item time={m.time} text={m.data.params.entry.text} />
-    )}
+    ) : <p>Nothing captured yet.</p>)}
   </>
 }
 

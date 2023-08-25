@@ -1,13 +1,9 @@
-import {useState} from 'react';
+import { useState, useContext } from 'react';
 
-import { Configuration, ChatGPTClient } from '../utils/chatgpt-api-client.js'
+import { AppContext } from '../contexts/AppContext';
 
 import ErrorSVG from '../../assets/error.svg';
 import AiSVG from '../../assets/ai.svg';
-
-// this should be somewhere else
-const apiKey = 'YOUR_API_KEY_HERE' //chrome.storage.local.get("apiKey").catch(console.error);
-const client = new ChatGPTClient(new Configuration({ apiKey }))
 
 interface Props {
   time: Date;
@@ -19,9 +15,11 @@ export const Item = (props: Props) => {
   const [aiResult, setAiResult] = useState<string|null>(null);
   const [loadingResult, setLoadingResult] = useState(false);
 
+  const { chatGPTClient } = useContext(AppContext);
+
   const callAI = async () => {
     setLoadingResult(true);
-    const explanation = await client.getErrorCompletion(text);
+    const explanation = await chatGPTClient?.getErrorCompletion(text);
     setLoadingResult(false);
     setAiResult(explanation);
   }
