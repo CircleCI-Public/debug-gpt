@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "AI DevTools",
+  "name": "Debug GPT",
   "description": "Explain browser errors using LLMs.",
   "version": "1.0",
   "permissions": [
