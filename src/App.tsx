@@ -6,15 +6,7 @@ import { AskForPasscode } from "./components/AskForPasscode";
 
 import { AppContext } from "./contexts/AppContext";
 
-interface Message {
-  uuid: string;
-  time: Date;
-  data: {
-    source: any;
-    method: string;
-    params: any;
-  };
-}
+import { Message } from './types';
 
 declare global {
   interface Window { onData: (msg: Message) => void; }
@@ -49,7 +41,7 @@ const App = () => {
   return <>
     <button onClick={() => setEncryptedKey('')}>Change Key</button>
     {(state.messages.length ? state.messages.map((m) =>
-      <Item time={m.time} text={m.data.params.entry.text} />
+      <Item message={m} />
     ) : <p>Nothing captured yet.</p>)}
   </>
 }

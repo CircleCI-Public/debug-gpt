@@ -1,17 +1,17 @@
 import { useState, useContext } from 'react';
 
 import { AppContext } from '../contexts/AppContext';
+import { Message } from '../types';
 
 import ErrorSVG from '../../assets/error.svg';
 import AiSVG from '../../assets/ai.svg';
 
 interface Props {
-  time: Date;
-  text: String;
+  message: Message;
 }
 
 export const Item = (props: Props) => {
-  const {time, text} = props;
+  const { message } = props;
   const [aiResult, setAiResult] = useState<string|null>(null);
   const [loadingResult, setLoadingResult] = useState(false);
 
@@ -19,7 +19,7 @@ export const Item = (props: Props) => {
 
   const callAI = async () => {
     setLoadingResult(true);
-    const explanation = await chatGPTClient?.getErrorCompletion(text);
+    const explanation = await chatGPTClient?.getErrorCompletion(message.event);
     setLoadingResult(false);
     setAiResult(explanation);
   }
@@ -28,9 +28,9 @@ export const Item = (props: Props) => {
     <div className={aiResult ? 'data data-ai' : 'data'}>
       <p>
         <img src={ErrorSVG} className='error' alt="" />
-        {aiResult ? aiResult : text}
+        {aiResult ? aiResult : `[${message.domain}] ${message.event}`}
       </p>
-      <p className="time">{time.toString()}</p>
+      <p className="time">{message.time.toString()}</p>
     </div>
     {!aiResult && <button className="enhance" onClick={callAI} disabled={loadingResult}>
       <img src={AiSVG} alt="" className='ai'/>
