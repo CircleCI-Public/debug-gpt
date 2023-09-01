@@ -1,4 +1,4 @@
-import { useContext, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 
 import {Item} from "./components/Item";
 import { AskForKey } from "./components/AskForKey";
@@ -39,10 +39,20 @@ const App = () => {
   }
 
   return <>
-    <button onClick={() => setEncryptedKey('')}>Change Key</button>
+    {/* <button onClick={() => setEncryptedKey('')}>Change Key</button> */}
+
+    <table className="w-full">
+      <tr className="bg-neutral-100 text-neutral-900">
+        <th className="text-left font-medium py-3 px-6">Error type</th>
+        <th className="text-left font-medium py-3 px-6">Domain</th>
+        <th className="text-left font-medium py-3 px-6">Time</th>
+        <th className="text-left font-medium py-3 px-6"></th>
+      </tr>
+
     {(state.messages.length ? state.messages.map((m) =>
       <Item message={m} />
-    ) : <p>Nothing captured yet.</p>)}
+    ) : <td className="text-left font-normal py-3 px-6 w-full whitespace-break-spaces">Nothing captured yet.</td>)}
+    </table>
   </>
 }
 

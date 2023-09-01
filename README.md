@@ -21,10 +21,10 @@ Then, in Chrome...
 ## Usage
 
 - In Chrome open DevTools
-- Pin the `Debug GPT` extension in the taskbar
+- Pin the `Debug-GPT` extension in the taskbar
 - Click the action button for the extension
   - You should get confirmation that an extension is debugging the browser
-- Watch the console and `Debug GPT` panel for LLM explanations of what's going on in your browser.
+- Watch the console and `Debug-GPT` panel for LLM explanations of what's going on in your browser.
 
 ## Contributing
 
