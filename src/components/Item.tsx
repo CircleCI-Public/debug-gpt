@@ -14,15 +14,24 @@ export const Item = (props: Props) => {
   const { message } = props;
   const [aiResult, setAiResult] = useState<string|null>('');
   const [loadingResult, setLoadingResult] = useState(false);
+  const [aiError, setAiError] = useState(false);
 
   const { chatGPTClient } = useContext(AppContext);
 
   const callAI = async () => {
+    // reset UI
+    setAiError(false);
     setLoadingResult(true);
-    const explanation = await chatGPTClient?.getErrorCompletion(message.event);
+
+    // call chatGPT API
+    const response = await chatGPTClient?.getErrorCompletion(message.event);
     setLoadingResult(false);
-    console.log(explanation);
-    setAiResult(explanation);
+
+    if (response && !response.error) {
+      setAiResult(response.content);
+    } else {
+      setAiError(true);
+    }
   }
 
   return <tr className={`border-b border-neutral-100 ${aiResult ? 'bg-gradient-to-r from-slate-600 to-cyan-950 text-white': 'bg-white hover:bg-neutral-50'}`}>
@@ -37,11 +46,12 @@ export const Item = (props: Props) => {
           <p>{message.event}</p>
         </details>
       </>}
+      {aiError && <p className='text-red-500'>Error while calling OpenAI API. Please make sure you are using a valid API key.</p>}
       {!aiResult && <p>{message.event}</p>}
     </td>
     <td className="text-left font-normal py-3 px-6 whitespace-nowrap align-baseline">{message.domain}</td>
     <td className="text-left font-normal py-3 px-6 whitespace-nowrap align-baseline">{new Date(message.time).toLocaleTimeString()}</td>
-    <td className="py-3 px-6 whitespace-nowrap align-baseline">{!aiResult && <button className="w-28 px-4 py-2 bg-gradient-to-r from-slate-600 to-cyan-950 rounded-3xl justify-center opacity-90 hover:opacity-100" onClick={callAI} disabled={loadingResult}>
+    <td className="py-3 px-6 whitespace-nowrap align-baseline">{!aiResult && <button className={`w-28 px-4 py-2 bg-gradient-to-r from-slate-600 to-cyan-950 rounded-3xl justify-center opacity-90 hover:opacity-100 ${loadingResult ? 'cursor-wait': ''}`}onClick={callAI} disabled={loadingResult}>
       <img src={SparkleSVG} alt="" className='h-5 inline-block'/>
       <span className='text-white align-bottom ml-1'>{loadingResult ? 'Loading...' : 'Enhance'}</span>
     </button>}
