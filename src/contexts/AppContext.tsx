@@ -11,12 +11,16 @@ export interface AppContextProps {
   setEncryptedKey: (key: string) => void;
   passcode: string;
   setPasscode: (passcode: string) => void;
+  gptLang: string;
+  setGPTLang: (lang: string) => void;
 }
 
 export const AppProvider = ({children}: {children: React.ReactNode}) => {
   const [chatGPTClient, setChatGPTClient] = useState<ChatGPTClient|null>(null);
   const [encryptedGPTKey, setEncryptedKey] = useChromeStorageLocal('gptkey', '');
   const [passcode, setPasscode] = useState('');
+
+  const [gptLang, setGPTLang] = useChromeStorageLocal('gptlang', 'english');
 
   useEffect(() => {
     if (passcode && encryptedGPTKey) {
@@ -27,7 +31,7 @@ export const AppProvider = ({children}: {children: React.ReactNode}) => {
 
   return (
     <AppContext.Provider
-      value={{chatGPTClient, encryptedGPTKey, setEncryptedKey, passcode, setPasscode }}
+      value={{chatGPTClient, encryptedGPTKey, setEncryptedKey, passcode, setPasscode, gptLang, setGPTLang }}
     >
       {children}
     </AppContext.Provider>
