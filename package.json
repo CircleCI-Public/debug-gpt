@@ -14,7 +14,8 @@
   },
   "scripts": {
     "build": "webpack",
-    "dev": "webpack --watch"
+    "dev": "webpack --watch",
+    "release": "webpack ; zip -vr debug-gpt.zip extension/"
   },
   "eslintConfig": {
     "extends": [
