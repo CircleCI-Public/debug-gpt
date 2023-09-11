@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
   display: flex;
   position: fixed;
@@ -27,55 +31,9 @@ p {
   overflow: scroll;
 }
 
-.item {
-  padding: 10px 20px;
-  border-bottom: 1px solid #eee;
-  display: flex;
+details > summary {
+  list-style: none;
 }
-
-.item:has(.data-ai) {
-  background-color: rgb(60, 138, 254);
-}
-
-.data-ai {
-  color: white;
-}
-
-.item .data {
-  width: 100%;
-}
-
-.time {
-  color: #8f8e8e;
-}
-
-.data-ai .time {
-  color: #fff;
-}
-
-button {
-  background-color: rgb(60, 138, 254);
-  float: right;
-  width: 120px;
-  color: #fff;
-  border: 0px;
-  border-radius: 20px;
-  cursor: pointer;
-  align-self: center;
-  margin-left: 30px;
-  padding: 7px;
-}
-
-img.error {
-  fill:#ec0909;
-  position: relative;
-  top: 2px;
-  margin-right: 3px;
-}
-
-img.ai {
-  fill:#fff;
-  position: relative;
-  top: 2px;
-  margin-right: 3px;
+details > summary::-webkit-details-marker {
+  display: none;
 }

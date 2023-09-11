@@ -1,5 +1,5 @@
 chrome.devtools.panels.create(
-  'Debug GPT',
+  'Debug-GPT',
   '',
   '/panel.html',
   extensionPanel => {

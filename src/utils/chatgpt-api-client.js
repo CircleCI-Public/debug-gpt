@@ -40,8 +40,12 @@ class ChatGPTClient {
       })
     })
 
+    if (!response.ok) {
+      return { error: true }
+    }
+
     const contents = await response.json()
-    return contents.choices[0].message.content
+    return { content: contents.choices[0].message.content, error: false }
   }
 }
 

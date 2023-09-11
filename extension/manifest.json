@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Debug GPT",
-  "description": "Explain browser errors using LLMs.",
+  "name": "Debug-GPT",
+  "description": "Your AI-Powered Debugging Assistant.",
   "version": "1.0",
   "permissions": [
     "debugger",
@@ -13,5 +13,10 @@
     "type": "module"
   },
   "devtools_page": "devtools.html",
-  "action": {}
+  "action": {},
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
 }
