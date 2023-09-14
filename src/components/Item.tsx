@@ -16,7 +16,7 @@ export const Item = (props: Props) => {
   const [loadingResult, setLoadingResult] = useState(false);
   const [aiError, setAiError] = useState(false);
 
-  const { chatGPTClient } = useContext(AppContext);
+  const { chatGPTClient, gptLang } = useContext(AppContext);
 
   const callAI = async () => {
     // reset UI
@@ -24,7 +24,7 @@ export const Item = (props: Props) => {
     setLoadingResult(true);
 
     // call chatGPT API
-    const response = await chatGPTClient?.getErrorCompletion(message.event);
+    const response = await chatGPTClient?.getErrorCompletion(message.event, gptLang);
     setLoadingResult(false);
 
     if (response && !response.error) {
