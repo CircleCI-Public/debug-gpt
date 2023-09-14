@@ -1,25 +1,25 @@
 class Configuration {
-  constructor (config) {
-    this.apiKey = config.apiKey
+  constructor(config) {
+    this.apiKey = config.apiKey;
   }
 }
 
 class ChatGPTClient {
-  static BASE_URL = 'https://api.openai.com/v1'
-  static CHAT_COMPLETIONS = `${ChatGPTClient.BASE_URL}/chat/completions`
-  static MODEL = 'gpt-3.5-turbo'
+  static BASE_URL = 'https://api.openai.com/v1';
+  static CHAT_COMPLETIONS = `${ChatGPTClient.BASE_URL}/chat/completions`;
+  static MODEL = 'gpt-3.5-turbo';
 
-  #configuration
+  #configuration;
 
-  constructor (configuration) {
-    this.#configuration = configuration
+  constructor(configuration) {
+    this.#configuration = configuration;
   }
 
-  async getErrorCompletion (msg, lang) {
+  async getErrorCompletion(msg, lang) {
     const response = await fetch(ChatGPTClient.CHAT_COMPLETIONS, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.#configuration.apiKey}`
+        Authorization: `Bearer ${this.#configuration.apiKey}`,
       },
       method: 'POST',
       body: JSON.stringify({
@@ -27,23 +27,23 @@ class ChatGPTClient {
         messages: [
           {
             role: 'system',
-            content: `You are an expert programmer and debugger. Your job is to accept messages asking for assistance understanding error messages and return your assessment of the error in ${lang}.`
+            content: `You are an expert programmer and debugger. Your job is to accept messages asking for assistance understanding error messages and return a detailed ${lang} assessment of the error with possible next steps.`,
           },
           {
             role: 'user',
-            content: msg
-          }
-        ]
-      })
-    })
+            content: msg,
+          },
+        ],
+      }),
+    });
 
     if (!response.ok) {
-      return { error: true }
+      return { error: true };
     }
 
-    const contents = await response.json()
-    return { content: contents.choices[0].message.content, error: false }
+    const contents = await response.json();
+    return { content: contents.choices[0].message.content, error: false };
   }
 }
 
-export { Configuration, ChatGPTClient }
+export { Configuration, ChatGPTClient };
