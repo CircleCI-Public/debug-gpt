@@ -5,7 +5,7 @@
   "version": "1.0",
   "permissions": [
     "debugger",
-    "tabs",
+    "activeTab",
     "storage"
   ],
   "background": {
