@@ -13,7 +13,7 @@ Debug-GPT translates complex error messages into actionable insights for swift i
 Follow these steps to get started with Debug-GPT:
 
 **Installation:**
-- Install the [Debug-GPT Chrome Extension](link) from the Chrome Web Store.
+- Install the [Debug-GPT Chrome Extension](https://chrome.google.com/webstore/detail/debug-gpt/gdejebcifoelpfihochmbaoghanjjdbc) from the Chrome Web Store.
 - Or run it [locally](#how-to-run-locally) if you are thinking about making some changes.
 
 **Usage:**
