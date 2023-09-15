@@ -3,7 +3,7 @@
 Simplify Debugging with Debug-GPT - A Chrome extension leveraging the power of OpenAI LLM to debug the web.
 Debug-GPT translates complex error messages into actionable insights for swift issue resolution.
 
-
+![Debug-GPT banner](banner.png)
 
 ## Requirements
 - Google Chrome Browser 88 and above
