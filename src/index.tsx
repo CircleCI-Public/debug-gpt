@@ -1,20 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import { AppProvider } from "./contexts/AppContext";
+import React from 'react';
 
-import "./style.css";
+import { createRoot } from 'react-dom/client';
 
-const rootElement = document.createElement("div");
-rootElement.id = "container";
+import App from './App';
+import { AppProvider } from './contexts/AppContext';
+
+import './style.css';
+
+const rootElement = document.createElement('div');
+rootElement.id = 'container';
 
 document.body.appendChild(rootElement);
 
-const root = ReactDOM.createRoot(rootElement);
+const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <AppProvider>
       <App />
     </AppProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
