@@ -1,6 +1,6 @@
 {
   "name": "debug-gpt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "@types/node": "16.18.3",
     "@types/react": "18.0.24",
