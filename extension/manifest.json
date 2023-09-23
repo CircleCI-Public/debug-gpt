@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Debug-GPT",
   "description": "Your AI-Powered Debugging Assistant.",
-  "version": "1.0",
+  "version": "1.0.1",
   "permissions": [
     "debugger",
     "activeTab",
