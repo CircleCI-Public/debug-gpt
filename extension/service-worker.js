@@ -1,31 +1,27 @@
 let tabId = null;
 
 chrome.action.onClicked.addListener((tab) => {
-  if (tab.url.startsWith('http')) {
-    tabId = tab.id;
+  tabId = tab.id;
 
-    chrome.debugger.attach({ tabId }, '1.2', () => {
-      chrome.debugger.sendCommand({ tabId }, 'Log.enable', {}, () => {
-        if (chrome.runtime.lastError) {
-          console.error(chrome.runtime.lastError);
-        }
-      });
-
-      chrome.debugger.sendCommand({ tabId }, 'Runtime.enable', {}, () => {
-        if (chrome.runtime.lastError) {
-          console.error(chrome.runtime.lastError);
-        }
-      });
-
-      chrome.debugger.sendCommand({ tabId }, 'Network.enable', {}, () => {
-        if (chrome.runtime.lastError) {
-          console.error(chrome.runtime.lastError);
-        }
-      });
+  chrome.debugger.attach({ tabId }, '1.2', () => {
+    chrome.debugger.sendCommand({ tabId }, 'Log.enable', {}, () => {
+      if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError);
+      }
     });
-  } else {
-    console.log('Debugger can only be attached to HTTP/HTTPS pages.');
-  }
+
+    chrome.debugger.sendCommand({ tabId }, 'Runtime.enable', {}, () => {
+      if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError);
+      }
+    });
+
+    chrome.debugger.sendCommand({ tabId }, 'Network.enable', {}, () => {
+      if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError);
+      }
+    });
+  });
 });
 
 let ports = [];
