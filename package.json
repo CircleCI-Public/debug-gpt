@@ -46,5 +46,11 @@
     "ts-loader": "9.4.1",
     "webpack": "5.74.0",
     "webpack-cli": "4.10.0"
+  },
+  "resolutions": {
+    "nth-check": "2.0.1"
+  },
+  "resolutions:comments": {
+    "nth-check": "nth-check is vulnerable to Inefficient Regular Expression Complexity - https://nvd.nist.gov/vuln/detail/CVE-2021-3803"
   }
 }
