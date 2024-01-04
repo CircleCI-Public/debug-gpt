@@ -34,13 +34,14 @@ export const LangPicker = ({ onClose }: Props): JSX.Element => {
         >
           <option value='English'>English</option>
           <option value='Arabic'>Arabic</option>
-          <option value='Chinese'>Chinese</option>
+          <option value='Cantonese'>Cantonese</option>
           <option value='French'>French</option>
           <option value='German'>German</option>
           <option value='Hindi'>Hindi</option>
           <option value='Italian'>Italian</option>
           <option value='Japanese'>Japanese</option>
           <option value='Korean'>Korean</option>
+          <option value='Mandarin'>Mandarin</option>
           <option value='Portuguese'>Portuguese</option>
           <option value='Spanish'>Spanish</option>
           <option value='Thai'>Thai</option>
